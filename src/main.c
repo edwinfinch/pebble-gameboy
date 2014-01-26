@@ -2,10 +2,12 @@
  
 Window* window;
 TextLayer *text_layer;
+TextLayer* date_text_layer;
 GBitmap *gameboy_bitmap;
 BitmapLayer *gameboy_layer;
 
 char timeBuffer[] = "00:00";
+char dateBuffer[] = "January 25";
 
 void on_animation_stopped(Animation *anim, bool finished, void *context)
 {
@@ -36,33 +38,43 @@ void animate_layer(Layer *layer, GRect *start, GRect *finish, int duration, int 
 void tick_handler(struct tm *tick_time, TimeUnits units_changed)
 {
 		Layer *window_layer = window_get_root_layer(window);
-        //Format the buffer string using tick_time as the time source
+        //Format the buffers using tick_time as the time source
         strftime(timeBuffer, sizeof("00:00"), "%H:%M", tick_time);
+	    strftime(dateBuffer, sizeof(dateBuffer), "%B %e", tick_time);
         
         //Change the TextLayer text to show the new time!
         text_layer_set_text(text_layer, timeBuffer);
+	    text_layer_set_text(date_text_layer, dateBuffer);
 	
 	int seconds = tick_time->tm_sec;
    
 	if(seconds == 58)
 	{
 		GRect start = GRect(4, 38, 132, 168);
-        GRect finish = GRect(4, 75, 132, 168);
+        GRect finish = GRect(4, 78, 132, 168);
+		GRect start1 = GRect(35, 68, 150, 140);
+        GRect finish1 = GRect(35, 8, 150, 140);
         animate_layer(text_layer_get_layer(text_layer), &start, &finish, 2000, 0);
+		animate_layer(text_layer_get_layer(date_text_layer), &start1, &finish1, 2000, 0);
 	}
 	
     else if(seconds == 0)
         {
-          GRect start = GRect(4, 5, 140, 168);
-          GRect finish = GRect(4, 38, 132, 168);
+          GRect start = GRect(4, 78, 132, 168);
+          GRect finish = GRect(4, 38, 132, 168); 
+		  GRect start1 = GRect(35, 8, 150, 140);
+          GRect finish1 = GRect(35, 68, 150, 140);
           animate_layer(text_layer_get_layer(text_layer), &start, &finish, 4000, 0);
+		animate_layer(text_layer_get_layer(date_text_layer), &start1, &finish1, 4000, 0);
         }
 		
 }
  
 void window_load(Window *window)
 {
+		Layer *window_layer = window_get_root_layer(window);
 	    ResHandle font_handle = resource_get_handle(RESOURCE_ID_FONT_GAMEGIRL_17);
+	    ResHandle font_handle2 = resource_get_handle(RESOURCE_ID_FONT_POKEMONGB_7);
 		//Load bitmap into GBitmap structure
 		gameboy_bitmap = gbitmap_create_with_resource(RESOURCE_ID_GAMEBOY_OUTLINE);
 		gameboy_layer = bitmap_layer_create(GRect(0, 0, 144, 168));
@@ -75,6 +87,13 @@ void window_load(Window *window)
         text_layer_set_text_color(text_layer, GColorBlack);
         text_layer_set_text_alignment(text_layer, GTextAlignmentCenter);
         text_layer_set_font(text_layer, fonts_load_custom_font(font_handle));
+	
+		//Date layer
+  		date_text_layer = text_layer_create(GRect(35,68,150,140));
+  		text_layer_set_font(date_text_layer,fonts_load_custom_font(font_handle2));
+ 		text_layer_set_background_color(date_text_layer, GColorClear);
+  		text_layer_set_text_color(date_text_layer, GColorBlack);
+ 		layer_add_child(window_layer, text_layer_get_layer(date_text_layer));
         
         layer_add_child(window_get_root_layer(window), (Layer*) text_layer);
         
@@ -92,6 +111,7 @@ void window_unload(Window *window)
 {
         //We will safely destroy the Window's elements here!
         text_layer_destroy(text_layer);
+		text_layer_destroy(date_text_layer);
 }
  
 void init()
@@ -109,7 +129,10 @@ void init()
         window_stack_push(window, true);
 	    GRect start = GRect(4, 5, 140, 168);
         GRect finish = GRect(4, 38, 132, 168);
+	    GRect start1 = GRect(35, 5, 150, 140);
+        GRect finish1 = GRect(35, 68, 150, 140);
         animate_layer(text_layer_get_layer(text_layer), &start, &finish, 4000, 0);
+        animate_layer(text_layer_get_layer(date_text_layer), &start1, &finish1, 4000, 0);
 }
  
 void deinit()
