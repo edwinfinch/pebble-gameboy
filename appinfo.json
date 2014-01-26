@@ -1,0 +1,39 @@
+{
+    "versionLabel": "0.1",
+    "uuid": "40d94f35-ed2b-4884-9485-a14207b04448",
+    "appKeys": {},
+    "longName": "GameBoy",
+    "versionCode": 1,
+    "capabilities": [
+        ""
+    ],
+    "shortName": "GameBoy",
+    "companyName": "edwin",
+    "watchapp": {
+        "watchface": true
+    },
+    "resources": {
+        "media": [
+            {
+                "type": "font",
+                "name": "FONT_POKEMONGB_15",
+                "file": "fonts/Pokemon GB.ttf"
+            },
+            {
+                "type": "font",
+                "name": "FONT_GAMEGIRL_15",
+                "file": "fonts/Gamegirl.ttf"
+            },
+            {
+                "type": "font",
+                "name": "FONT_GAMEGIRL_17",
+                "file": "fonts/Gamegirl.ttf"
+            },
+            {
+                "type": "png",
+                "name": "GAMEBOY_OUTLINE",
+                "file": "images/gameboy_resource.png"
+            }
+        ]
+    }
+}
