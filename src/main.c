@@ -42,6 +42,13 @@ void tick_handler(struct tm *tick_time, TimeUnits units_changed)
         strftime(timeBuffer, sizeof("00:00"), "%H:%M", tick_time);
 	    strftime(dateBuffer, sizeof(dateBuffer), "%B %e", tick_time);
         
+		if(clock_is_24h_style()){
+      		strftime(timeBuffer, sizeof(timeBuffer), "%H:%M", tick_time);
+   		 }
+   		 else{
+     		 strftime(timeBuffer,sizeof(timeBuffer),"%I:%M",tick_time);
+   		 }
+	
         //Change the TextLayer text to show the new time!
         text_layer_set_text(text_layer, timeBuffer);
 	    text_layer_set_text(date_text_layer, dateBuffer);
@@ -52,20 +59,23 @@ void tick_handler(struct tm *tick_time, TimeUnits units_changed)
 	{
 		GRect start = GRect(4, 38, 132, 168);
         GRect finish = GRect(4, 78, 132, 168);
-		GRect start1 = GRect(35, 68, 150, 140);
-        GRect finish1 = GRect(35, 8, 150, 140);
+		
+		//If you want to re-animate the day, take the comment slashes off of the 6 comments below this
+		
+		//GRect start1 = GRect(35, 68, 150, 140);
+        //GRect finish1 = GRect(35, 8, 150, 140);
         animate_layer(text_layer_get_layer(text_layer), &start, &finish, 2000, 0);
-		animate_layer(text_layer_get_layer(date_text_layer), &start1, &finish1, 2000, 0);
+		//animate_layer(text_layer_get_layer(date_text_layer), &start1, &finish1, 2000, 0);
 	}
 	
     else if(seconds == 0)
         {
           GRect start = GRect(4, 78, 132, 168);
           GRect finish = GRect(4, 38, 132, 168); 
-		  GRect start1 = GRect(35, 8, 150, 140);
-          GRect finish1 = GRect(35, 68, 150, 140);
+		  //GRect start1 = GRect(35, 8, 150, 140);
+          //GRect finish1 = GRect(35, 68, 150, 140);
           animate_layer(text_layer_get_layer(text_layer), &start, &finish, 4000, 0);
-		animate_layer(text_layer_get_layer(date_text_layer), &start1, &finish1, 4000, 0);
+		  //animate_layer(text_layer_get_layer(date_text_layer), &start1, &finish1, 4000, 0);
         }
 		
 }

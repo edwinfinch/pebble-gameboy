@@ -1,19 +1,25 @@
 {
-    "versionLabel": "0.1",
+    "versionLabel": "0.8.2",
     "uuid": "40d94f35-ed2b-4884-9485-a14207b04448",
     "appKeys": {},
-    "longName": "GameBoy",
-    "versionCode": 1,
+    "longName": "PebbleBoy (GameBoy)",
+    "versionCode": 13,
     "capabilities": [
         ""
     ],
-    "shortName": "GameBoy",
+    "shortName": "PebbleBoy",
     "companyName": "edwin",
     "watchapp": {
         "watchface": true
     },
     "resources": {
         "media": [
+            {
+                "menuIcon": true,
+                "type": "png",
+                "name": "MENU_ICON",
+                "file": "images/download (2).png"
+            },
             {
                 "type": "font",
                 "name": "FONT_POKEMONGB_7",
