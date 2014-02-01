@@ -7,7 +7,7 @@ GBitmap *gameboy_bitmap;
 BitmapLayer *gameboy_layer;
 
 char timeBuffer[] = "00:00";
-char dateBuffer[] = "January 25";
+char dateBuffer[] = "February 31";
 
 void on_animation_stopped(Animation *anim, bool finished, void *context)
 {
@@ -57,12 +57,13 @@ void tick_handler(struct tm *tick_time, TimeUnits units_changed)
    
 	if(seconds == 58)
 	{
+		//To re-enable date animations take the comment slashes out from under the next 6 (indented) comments
 		GRect start = GRect(4, 38, 132, 168);
         GRect finish = GRect(4, 78, 132, 168);
 		  GRect start1 = GRect(35, 68, 150, 140);
           GRect finish1 = GRect(35, 8, 150, 140);
         animate_layer(text_layer_get_layer(text_layer), &start, &finish, 2000, 0);
-		  animate_layer(text_layer_get_layer(date_text_layer), &start1, &finish1, 2000, 0);
+		  //animate_layer(text_layer_get_layer(date_text_layer), &start1, &finish1, 2000, 0);
 	}
 	
     else if(seconds == 0)
@@ -72,7 +73,7 @@ void tick_handler(struct tm *tick_time, TimeUnits units_changed)
 		    GRect start1 = GRect(35, 8, 150, 140);
             GRect finish1 = GRect(35, 68, 150, 140);
           animate_layer(text_layer_get_layer(text_layer), &start, &finish, 4000, 0);
-		    animate_layer(text_layer_get_layer(date_text_layer), &start1, &finish1, 4000, 0);
+		    //animate_layer(text_layer_get_layer(date_text_layer), &start1, &finish1, 4000, 0);
         }
 		
 }
@@ -96,7 +97,7 @@ void window_load(Window *window)
         text_layer_set_font(text_layer, fonts_load_custom_font(font_handle));
 	
 		//Date layer
-  		date_text_layer = text_layer_create(GRect(35,68,150,140));
+  		date_text_layer = text_layer_create(GRect(35,68,168,144));
   		text_layer_set_font(date_text_layer,fonts_load_custom_font(font_handle2));
  		text_layer_set_background_color(date_text_layer, GColorClear);
   		text_layer_set_text_color(date_text_layer, GColorBlack);
