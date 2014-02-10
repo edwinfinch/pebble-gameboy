@@ -8,6 +8,8 @@ BitmapLayer *gameboy_layer;
 
 char timeBuffer[] = "00:00";
 char dateBuffer[] = "February 31";
+int animationNumber = 0;
+bool booted = false;
 
 void on_animation_stopped(Animation *anim, bool finished, void *context)
 {
@@ -30,6 +32,12 @@ void animate_layer(Layer *layer, GRect *start, GRect *finish, int duration, int 
         .stopped = (AnimationStoppedHandler) on_animation_stopped
     };
     animation_set_handlers((Animation*) anim, handlers, NULL);
+	animationNumber++;
+	
+	if(animationNumber == 2 && booted == false){
+		animationNumber = 0;
+		booted = true;
+	}
      
     //Start animation
     animation_schedule((Animation*) anim);
@@ -55,7 +63,7 @@ void tick_handler(struct tm *tick_time, TimeUnits units_changed)
 	
 	int seconds = tick_time->tm_sec;
    
-	if(seconds == 58)
+	if(seconds == 58 && booted == true)
 	{
 		//To re-enable date animations take the comment slashes out from under the next 6 (indented) comments
 		GRect start = GRect(4, 38, 132, 168);
@@ -66,7 +74,7 @@ void tick_handler(struct tm *tick_time, TimeUnits units_changed)
 		  //animate_layer(text_layer_get_layer(date_text_layer), &start1, &finish1, 2000, 0);
 	}
 	
-    else if(seconds == 0)
+    else if(seconds == 0 && booted == true)
         {
           GRect start = GRect(4, 78, 132, 168);
           GRect finish = GRect(4, 38, 132, 168); 

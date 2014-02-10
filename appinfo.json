@@ -1,9 +1,9 @@
 {
-    "versionLabel": "0.8.2",
+    "versionLabel": "0.8.3",
     "uuid": "40d94f35-ed2b-4884-9485-a14207b04448",
     "appKeys": {},
     "longName": "PebbleBoy (GameBoy)",
-    "versionCode": 13,
+    "versionCode": 14,
     "capabilities": [
         ""
     ],
