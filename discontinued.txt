@@ -1,0 +1,9 @@
+This application/code/etc. is partially discontinued. 
+
+It will no longer be fully supported by Edwin Finch. 
+
+The only updates that will be pushed to this will be:
+
+-Massive bugs (that cripple the use of this application)
+
+-Firmware version ports/updates (ie. 2.0 -> 2.1)
