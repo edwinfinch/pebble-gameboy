@@ -1,45 +1,46 @@
 {
-    "versionLabel": "0.8.3",
-    "uuid": "40d94f35-ed2b-4884-9485-a14207b04448",
     "appKeys": {},
-    "longName": "PebbleBoy (GameBoy)",
-    "versionCode": 14,
     "capabilities": [
         ""
     ],
-    "shortName": "PebbleBoy",
-    "companyName": "edwin",
-    "watchapp": {
-        "watchface": true
-    },
+    "companyName": "Edwin Finch",
+    "longName": "PebbleBoy (GameBoy)",
+    "projectType": "native",
     "resources": {
         "media": [
             {
+                "file": "images/download (2).png",
                 "menuIcon": true,
-                "type": "png",
                 "name": "MENU_ICON",
-                "file": "images/download (2).png"
+                "type": "png"
             },
             {
-                "type": "font",
-                "name": "FONT_POKEMONGB_7",
-                "file": "fonts/Pokemon GB.ttf"
-            },
-            {
-                "type": "font",
-                "name": "FONT_GAMEGIRL_15",
-                "file": "fonts/Gamegirl.ttf"
-            },
-            {
-                "type": "font",
-                "name": "FONT_GAMEGIRL_17",
-                "file": "fonts/Gamegirl.ttf"
-            },
-            {
-                "type": "png",
+                "file": "images/gameboy_resource.png",
                 "name": "GAMEBOY_OUTLINE",
-                "file": "images/gameboy_resource.png"
+                "type": "png"
+            },
+            {
+                "file": "fonts/Gamegirl.ttf",
+                "name": "FONT_GAMEGIRL_17",
+                "type": "font"
+            },
+            {
+                "file": "fonts/Gamegirl.ttf",
+                "name": "FONT_GAMEGIRL_15",
+                "type": "font"
+            },
+            {
+                "file": "fonts/Pokemon GB.ttf",
+                "name": "FONT_POKEMONGB_7",
+                "type": "font"
             }
         ]
+    },
+    "shortName": "PebbleBoy",
+    "uuid": "40d94f35-ed2b-4884-9485-a14207b04448",
+    "versionCode": 14,
+    "versionLabel": "0.9",
+    "watchapp": {
+        "watchface": true
     }
 }

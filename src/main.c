@@ -1,15 +1,14 @@
 #include <pebble.h>
  
 Window* window;
-TextLayer *text_layer;
-TextLayer* date_text_layer;
+TextLayer *text_layer, *date_text_layer;
 GBitmap *gameboy_bitmap;
 BitmapLayer *gameboy_layer;
 
 char timeBuffer[] = "00:00";
 char dateBuffer[] = "February 31";
 int animationNumber = 0;
-bool booted = false;
+bool booted = 0;
 
 void on_animation_stopped(Animation *anim, bool finished, void *context)
 {
@@ -165,7 +164,7 @@ void deinit()
  
 int main(void)
 {
-        init();
-        app_event_loop();
-        deinit();
+	init();
+	app_event_loop();
+	deinit();
 }
