@@ -9,19 +9,8 @@
     "resources": {
         "media": [
             {
-                "file": "images/download (2).png",
-                "menuIcon": true,
-                "name": "MENU_ICON",
-                "type": "png"
-            },
-            {
-                "file": "images/gameboy_resource.png",
-                "name": "GAMEBOY_OUTLINE",
-                "type": "png"
-            },
-            {
-                "file": "fonts/Gamegirl.ttf",
-                "name": "FONT_GAMEGIRL_17",
+                "file": "fonts/Pokemon GB.ttf",
+                "name": "FONT_POKEMONGB_7",
                 "type": "font"
             },
             {
@@ -30,15 +19,27 @@
                 "type": "font"
             },
             {
-                "file": "fonts/Pokemon GB.ttf",
-                "name": "FONT_POKEMONGB_7",
+                "file": "fonts/Gamegirl.ttf",
+                "name": "FONT_GAMEGIRL_17",
                 "type": "font"
+            },
+            {
+                "file": "images/gameboy_resource.png",
+                "name": "GAMEBOY_OUTLINE",
+                "type": "png"
+            },
+            {
+                "file": "images/download (2).png",
+                "menuIcon": true,
+                "name": "MENU_ICON",
+                "type": "png"
             }
         ]
     },
+    "sdkVersion": "2",
     "shortName": "PebbleBoy",
     "uuid": "40d94f35-ed2b-4884-9485-a14207b04448",
-    "versionCode": 14,
+    "versionCode": 1,
     "versionLabel": "0.9",
     "watchapp": {
         "watchface": true

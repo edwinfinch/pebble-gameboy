@@ -1,3 +1,5 @@
+//Edwin is the bomb.com or might not be depending on if you believe so or not
+
 #include <pebble.h>
  
 Window* window;
@@ -10,14 +12,12 @@ char dateBuffer[] = "February 31";
 int animationNumber = 0;
 bool booted = 0;
 
-void on_animation_stopped(Animation *anim, bool finished, void *context)
-{
+void on_animation_stopped(Animation *anim, bool finished, void *context){
     //Free the memoery used by the Animation
     property_animation_destroy((PropertyAnimation*) anim);
 }
  
-void animate_layer(Layer *layer, GRect *start, GRect *finish, int duration, int delay)
-{
+void animate_layer(Layer *layer, GRect *start, GRect *finish, int duration, int delay){
     //Declare animation
     PropertyAnimation *anim = property_animation_create_layer_frame(layer, start, finish);
      
@@ -42,8 +42,7 @@ void animate_layer(Layer *layer, GRect *start, GRect *finish, int duration, int 
     animation_schedule((Animation*) anim);
 }
 
-void tick_handler(struct tm *tick_time, TimeUnits units_changed)
-{
+void tick_handler(struct tm *tick_time, TimeUnits units_changed){
 		Layer *window_layer = window_get_root_layer(window);
         //Format the buffers using tick_time as the time source
         strftime(timeBuffer, sizeof("00:00"), "%H:%M", tick_time);
@@ -85,8 +84,7 @@ void tick_handler(struct tm *tick_time, TimeUnits units_changed)
 		
 }
  
-void window_load(Window *window)
-{
+void window_load(Window *window){
 		Layer *window_layer = window_get_root_layer(window);
 	    ResHandle font_handle = resource_get_handle(RESOURCE_ID_FONT_GAMEGIRL_17);
 	    ResHandle font_handle2 = resource_get_handle(RESOURCE_ID_FONT_POKEMONGB_7);
@@ -122,17 +120,13 @@ void window_load(Window *window)
         tick_handler(t, SECOND_UNIT);
 }
  
-void window_unload(Window *window)
-{
-        //We will safely destroy the Window's elements here!
+void window_unload(Window *window){
         text_layer_destroy(text_layer);
 		text_layer_destroy(date_text_layer);
 }
  
-void init()
-{
+void init(){
 		Layer *window_layer = window_get_root_layer(window);
-        //Initialize the app elements here!
         window = window_create();
         window_set_window_handlers(window, (WindowHandlers) {
                 .load = window_load,
@@ -150,8 +144,7 @@ void init()
         animate_layer(text_layer_get_layer(date_text_layer), &start1, &finish1, 4000, 0);
 }
  
-void deinit()
-{
+void deinit(){
         //De-initialize elements here to save memory!
         tick_timer_service_unsubscribe();
         window_destroy(window);
@@ -162,8 +155,7 @@ void deinit()
 		bitmap_layer_destroy(gameboy_layer);
 }
  
-int main(void)
-{
+int main(void){
 	init();
 	app_event_loop();
 	deinit();
